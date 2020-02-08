@@ -1,6 +1,6 @@
 <template>
   <div id="overview">
-    <day-select v-bind:selected="day"></day-select>
+    <day-select v-bind:selected="day" @set-day="setDay"></day-select>
     <div class="main">
       <movie-list
         v-bind:genre="genre"
@@ -24,6 +24,9 @@ export default {
     genre: []
   }),
   methods: {
+    setDay(day) {
+      this.$emit("set-day", day);
+    },
     checkFilter(category, title, checked) {
       if (checked) {
         this[category].push(title);

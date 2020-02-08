@@ -5,20 +5,11 @@
       <h1>Vue.js Cinema</h1>
     </div>
     <keep-alive>
-      <router-view v-bind:movies="movies" v-bind:day="day"></router-view>
+      <router-view v-bind:movies="movies" v-bind:day="day" @set-day="setDay"></router-view>
     </keep-alive>
   </div>
 </template>
 <script>
-import Vue from "vue";
-import { setDay } from "./util/bus";
-const bus = new Vue();
-Object.defineProperty(Vue.prototype, "$bus", {
-  get() {
-    return bus;
-  }
-});
-
 import moment from "moment-timezone";
 moment.tz.setDefault("UTC");
 
@@ -31,7 +22,11 @@ export default {
     this.$http.get("/api").then(response => {
       this.movies = response.data;
     });
-    this.$bus.$on("set-day", setDay.bind(this));
+  },
+  methods: {
+    setDay (day) {
+      this.day = day;
+    }
   }
 };
 </script>
