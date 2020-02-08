@@ -5,7 +5,7 @@
         v-bind:class="{ day: true, active: isActive(day) }"
         v-for="day in days"
         v-on:click="selectDay(day)"
-        :key="day"
+        :key="day.toISOString()"
       >
         {{ formatDay(day) }}
       </li>
