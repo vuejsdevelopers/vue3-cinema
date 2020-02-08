@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import "./style.scss";
 
+import VueCompositionApi from '@vue/composition-api';
+Vue.use(VueCompositionApi);
+
 Vue.config.productionTip = false;
 import VueResource from "vue-resource";
 Vue.use(VueResource);
