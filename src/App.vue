@@ -15,7 +15,6 @@
   </div>
 </template>
 <script>
-
 import Vue from "vue";
 import { checkFilter, setDay } from "./util/bus";
 const bus = new Vue();
@@ -27,11 +26,6 @@ Object.defineProperty(Vue.prototype, "$bus", {
 
 import moment from "moment-timezone";
 moment.tz.setDefault("UTC");
-Object.defineProperty(Vue.prototype, "$moment", {
-  get() {
-    return moment;
-  }
-});
 
 export default {
   data: () => ({

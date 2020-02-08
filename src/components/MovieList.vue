@@ -29,6 +29,7 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 import times from "../util/times";
 import MovieItem from "./MovieItem.vue";
 
@@ -36,7 +37,7 @@ export default {
   props: ["genre", "time", "movies", "day"],
   methods: {
     formatSessionTime(raw) {
-      return this.$moment(raw).format("h:mm A");
+      return moment(raw).format("h:mm A");
     },
     filteredSessions(sessions) {
       return sessions.filter(this.sessionPassesTimeFilter);
@@ -56,14 +57,14 @@ export default {
       }
     },
     sessionPassesTimeFilter(session) {
-      if (!this.day.isSame(this.$moment(session.time), "day")) {
+      if (!this.day.isSame(moment(session.time), "day")) {
         return false;
       } else if (this.time.length === 0 || this.time.length === 2) {
         return true;
       } else if (this.time[0] === times.AFTER_6PM) {
-        return this.$moment(session.time).hour() >= 18;
+        return moment(session.time).hour() >= 18;
       } else {
-        return this.$moment(session.time).hour() < 18;
+        return moment(session.time).hour() < 18;
       }
     }
   },
