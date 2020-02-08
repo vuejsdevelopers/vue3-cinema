@@ -8,7 +8,7 @@
         v-bind:movies="movies"
         v-bind:day="day"
       ></movie-list>
-      <movie-filter></movie-filter>
+      <movie-filter @check-filter="checkFilter" />
     </div>
   </div>
 </template>
@@ -18,7 +18,23 @@ import MovieFilter from "./MovieFilter.vue";
 import DaySelect from "./DaySelect.vue";
 
 export default {
-  props: ["genre", "time", "movies", "day"],
+  props: ["movies", "day"],
+  data: () => ({
+    time: [],
+    genre: []
+  }),
+  methods: {
+    checkFilter(category, title, checked) {
+      if (checked) {
+        this[category].push(title);
+      } else {
+        let index = this[category].indexOf(title);
+        if (index > -1) {
+          this[category].splice(index, 1);
+        }
+      }
+    }
+  },
   components: {
     MovieList,
     MovieFilter,
