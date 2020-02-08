@@ -5,7 +5,11 @@
       <h1>Vue.js Cinema</h1>
     </div>
     <keep-alive>
-      <router-view v-bind:movies="movies" v-bind:day="day" @set-day="setDay"></router-view>
+      <router-view
+        v-bind:movies="movies"
+        v-bind:day="day"
+        @set-day="setDay"
+      ></router-view>
     </keep-alive>
   </div>
 </template>
@@ -24,7 +28,7 @@ export default {
     });
   },
   methods: {
-    setDay (day) {
+    setDay(day) {
       this.day = day;
     }
   }

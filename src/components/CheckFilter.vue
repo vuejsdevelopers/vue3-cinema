@@ -1,6 +1,6 @@
 <template>
   <div
-    v-bind:class="{ 'check-filter': true, active: checked }"
+    v-bind:class="{ 'check-filter': true, active: state.checked }"
     v-on:click="checkFilter"
   >
     <span class="checkbox"></span>
@@ -8,18 +8,21 @@
   </div>
 </template>
 <script>
+import { reactive } from "@vue/composition-api";
 export default {
-  data() {
-    return {
+  props: ["title"],
+  setup(props, context) {
+    const state = reactive({
       checked: false
-    };
-  },
-  props: ["title", "category"],
-  methods: {
-    checkFilter() {
-      this.checked = !this.checked;
-      this.$emit("check-filter", this.category, this.title, this.checked);
+    });
+    function checkFilter() {
+      state.checked = !state.checked;
+      context.emit("check-filter", state.checked);
     }
+    return {
+      state,
+      checkFilter
+    };
   }
 };
 </script>

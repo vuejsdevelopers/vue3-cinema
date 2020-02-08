@@ -8,7 +8,7 @@
         category="time"
         v-bind:title="time"
         :key="time"
-        @check-filter="checkFilter"
+        @check-filter="checkFilter('time', time, $event)"
       ></check-filter>
     </div>
     <h3>By genre</h3>
@@ -18,7 +18,7 @@
         category="genre"
         v-bind:title="genre"
         :key="genre"
-        @check-filter="checkFilter"
+        @check-filter="checkFilter('genre', genre, $event)"
       ></check-filter>
     </div>
   </div>
