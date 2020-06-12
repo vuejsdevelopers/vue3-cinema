@@ -32,7 +32,7 @@ export default {
       if (checked) {
         this[category].push(title);
       } else {
-        let index = this[category].indexOf(title);
+        const index = this[category].indexOf(title);
         if (index > -1) {
           this[category].splice(index, 1);
         }

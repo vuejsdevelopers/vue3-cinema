@@ -5,11 +5,13 @@ moment.tz.setDefault("UTC");
 const fs = require("fs");
 const path = require("path");
 
-const data = JSON.parse(fs.readFileSync(path.resolve("./api/offline.json"), "utf-8"));
+const data = JSON.parse(
+  fs.readFileSync(path.resolve("./api/offline.json"), "utf-8")
+);
 
 function generateSessions(id) {
-  let sessions = [];
-  let nums = id
+  const sessions = [];
+  const nums = id
     .replace("tt", "")
     .split("")
     .map(item => {
@@ -25,13 +27,14 @@ function generateSessions(id) {
   nums.splice(nums[3], 0, nums[0]);
   nums.shift();
   nums.forEach((num, index) => {
-    let date = moment()
+    const date = moment()
       .startOf("day")
       .add(index, "days");
     for (let i = 0; i < num; i++) {
-      let pos = index + i <= nums.length ? index + i : index + i - nums.length;
-      let hours = nums[pos] + 12;
-      let mins =
+      const pos =
+        index + i <= nums.length ? index + i : index + i - nums.length;
+      const hours = nums[pos] + 12;
+      const mins =
         nums[pos] < 2.5 ? 0 : nums[pos] < 5 ? 15 : nums[pos] < 7.5 ? 30 : 45;
       sessions.push({
         id: `${id}_${i}`,
@@ -69,10 +72,11 @@ function cleanData(movie) {
   return movie;
 }
 
-module.exports = () => data.map(item => {
-  return {
-    id: item.imdbID,
-    movie: cleanData(item),
-    sessions: generateSessions(item.imdbID)
-  }
-});
+module.exports = () =>
+  data.map(item => {
+    return {
+      id: item.imdbID,
+      movie: cleanData(item),
+      sessions: generateSessions(item.imdbID)
+    };
+  });

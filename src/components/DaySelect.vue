@@ -41,7 +41,7 @@ export default {
       this.$emit("set-day", day);
     },
     changeDay(change) {
-      let newDay = moment(this.selected).add(change, "days");
+      const newDay = moment(this.selected).add(change, "days");
       if (this.days.find(day => newDay.isSame(day, "day"))) {
         this.selectDay(newDay);
       }

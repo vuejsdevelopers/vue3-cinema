@@ -46,7 +46,7 @@ export default {
       if (!this.genre.length) {
         return true;
       } else {
-        let movieGenres = movie.movie.Genre.split(", ");
+        const movieGenres = movie.movie.Genre.split(", ");
         let matched = true;
         this.genre.forEach(genre => {
           if (movieGenres.indexOf(genre) === -1) {
@@ -75,8 +75,8 @@ export default {
         .filter(movie => movie.sessions.find(this.sessionPassesTimeFilter));
     },
     noResults() {
-      let times = this.time.join(", ");
-      let genres = this.genre.join(", ");
+      const times = this.time.join(", ");
+      const genres = this.genre.join(", ");
       return `No results for ${times}${
         times.length && genres.length ? ", " : ""
       }${genres}.`;

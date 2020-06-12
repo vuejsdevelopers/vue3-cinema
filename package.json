@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "concurrently \"npm:serve:*\" -k",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint api src",
     "serve:client": "vue-cli-service serve",
     "serve:server": "nodemon api --ignore src/ -e js,html,css"
   },
@@ -31,7 +31,12 @@
     "babel-eslint": "^10.1.0",
     "concurrently": "^5.2.0",
     "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^7.0.0-alpha.0",
     "prettier": "^1.19.1",
     "sass": "^1.26.8",
