@@ -20,6 +20,7 @@
 import moment from "moment";
 export default {
   props: ["selected"],
+  emits: ["set-day"],
   data() {
     return {
       days: [0, 1, 2, 3, 4, 5, 6].map(num => moment().add(num, "days"))

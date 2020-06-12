@@ -24,9 +24,9 @@
   </div>
 </template>
 <script>
-import genres from "../util/genres";
-import times from "../util/times";
-import CheckFilter from "./CheckFilter.vue";
+import genres from "@/util/genres";
+import times from "@/util/times";
+import CheckFilter from "@/components/CheckFilter.vue";
 
 export default {
   data() {

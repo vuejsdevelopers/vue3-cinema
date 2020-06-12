@@ -1,14 +1,11 @@
 require("dotenv").config();
 
-const axios = require("axios");
-const async = require("async");
 const moment = require("moment-timezone");
 moment.tz.setDefault("UTC");
+const fs = require("fs");
+const path = require("path");
 
-// Axios
-const $http = axios.create({
-  baseURL: `http://localhost:${process.env.SERVER_PORT}/offline_api`
-});
+const data = JSON.parse(fs.readFileSync(path.resolve("./api/offline.json"), "utf-8"));
 
 function generateSessions(id) {
   let sessions = [];
@@ -66,54 +63,16 @@ function cleanData(movie) {
     movie.Rated === "UNRATED" ||
     movie.Rated === "NOT RATED"
   ) {
-    let last = parseInt(movie.imdbID[movie.imdbID.length - 1]);
+    const last = parseInt(movie.imdbID[movie.imdbID.length - 1]);
     movie.Rated = last < 7 ? (last < 4 ? "G" : "PG-13") : "R";
   }
   return movie;
 }
 
-module.exports = {
-  data: [],
-  getData(callback) {
-    if (!this.data.length) {
-      let ids = process.env.IMDB_IDS.split(",");
-      let data = [];
-      async.each(
-        ids,
-        function(id, callback) {
-          if (!data.find(item => item.id === id)) {
-            $http.get(`?i=${id}`).then(
-              function(response) {
-                if (!response.data.Error) {
-                  data.push({
-                    id,
-                    movie: cleanData(response.data),
-                    sessions: generateSessions(id)
-                  });
-                } else {
-                  console.log(response.data.Error);
-                }
-                callback();
-              },
-              function(err) {
-                callback(err);
-              }
-            );
-          } else {
-            callback();
-          }
-        },
-        err => {
-          if (err) {
-            callback(err, null);
-          } else {
-            this.data = ids.map(id => data.find(item => id === item.id));
-            callback(null, this.data);
-          }
-        }
-      );
-    } else {
-      callback(null, this.data);
-    }
+module.exports = () => data.map(item => {
+  return {
+    id: item.imdbID,
+    movie: cleanData(item),
+    sessions: generateSessions(item.imdbID)
   }
-};
+});

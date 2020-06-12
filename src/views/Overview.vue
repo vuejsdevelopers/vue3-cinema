@@ -13,12 +13,13 @@
   </div>
 </template>
 <script>
-import MovieList from "./MovieList.vue";
-import MovieFilter from "./MovieFilter.vue";
-import DaySelect from "./DaySelect.vue";
+import MovieList from "@/components/MovieList.vue";
+import MovieFilter from "@/components/MovieFilter.vue";
+import DaySelect from "@/components/DaySelect.vue";
 
 export default {
   props: ["movies", "day"],
+  emits: ["set-day"],
   data: () => ({
     time: [],
     genre: []

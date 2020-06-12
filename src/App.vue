@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="title">
-      <img src="/logo.png" />
+      <img src="./assets/logo.png" />
       <h1>Vue.js Cinema</h1>
     </div>
     <keep-alive>
@@ -23,10 +23,9 @@ export default {
     movies: [],
     day: moment()
   }),
-  created() {
-    axios.get("/api").then(response => {
-      this.movies = response.data;
-    });
+  async created() {
+    const response = await axios.get("/api");
+    this.movies = response.data;
   },
   methods: {
     setDay(day) {

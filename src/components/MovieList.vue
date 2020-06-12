@@ -30,8 +30,8 @@
 </template>
 <script>
 import moment from "moment";
-import times from "../util/times";
-import MovieItem from "./MovieItem.vue";
+import times from "@/util/times";
+import MovieItem from "@/components/MovieItem.vue";
 
 export default {
   props: ["genre", "time", "movies", "day"],

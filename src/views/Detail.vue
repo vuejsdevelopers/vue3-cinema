@@ -30,13 +30,15 @@
   </div>
 </template>
 <script>
-import MovieItem from "./MovieItem.vue";
+import MovieItem from "@/components/MovieItem.vue";
 
 export default {
   props: ["movies"],
   computed: {
     movie() {
-      let movie = this.movies.find(movie => movie.id === this.$route.params.id);
+      const movie = this.movies.find(
+        movie => movie.id === this.$route.params.id
+      );
       return movie ? movie.movie : null;
     }
   },
