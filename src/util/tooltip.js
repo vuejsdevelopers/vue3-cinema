@@ -13,7 +13,7 @@ let mouseOutHandler = function(event) {
 export default {
   install(Vue) {
     Vue.directive("tooltip", {
-      bind(el, bindings) {
+      mounted(el, bindings) {
         let span = document.createElement("SPAN");
         let text = document.createTextNode(
           `Seats available: ${bindings.value.seats}`
@@ -27,7 +27,7 @@ export default {
         div.addEventListener("touchstart", mouseOverHandler);
         div.addEventListener("touchend", mouseOutHandler);
       },
-      unbind(el) {
+      unmounted(el) {
         let div = el.getElementsByTagName("DIV")[0];
         div.removeEventListener("mouseover", mouseOverHandler);
         div.removeEventListener("mouseout", mouseOutHandler);

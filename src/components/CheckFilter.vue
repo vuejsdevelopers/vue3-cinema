@@ -8,9 +8,10 @@
   </div>
 </template>
 <script>
-import { reactive } from "@vue/composition-api";
+import { reactive } from "vue";
 export default {
   props: ["title"],
+  emits: ["check-filter"],
   setup(props, context) {
     const state = reactive({
       checked: false

@@ -15,6 +15,7 @@
 </template>
 <script>
 import moment from "moment-timezone";
+import axios from "axios";
 moment.tz.setDefault("UTC");
 
 export default {
@@ -23,7 +24,7 @@ export default {
     day: moment()
   }),
   created() {
-    this.$http.get("/api").then(response => {
+    axios.get("/api").then(response => {
       this.movies = response.data;
     });
   },

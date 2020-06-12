@@ -36,8 +36,8 @@ export default {
     };
   },
   methods: {
-    checkFilter() {
-      this.$emit("check-filter", ...arguments);
+    checkFilter(category, title, checked) {
+      this.$emit("check-filter", { category, title, checked });
     }
   },
   components: {

@@ -27,7 +27,7 @@ export default {
     setDay(day) {
       this.$emit("set-day", day);
     },
-    checkFilter(category, title, checked) {
+    checkFilter({ category, title, checked }) {
       if (checked) {
         this[category].push(title);
       } else {
