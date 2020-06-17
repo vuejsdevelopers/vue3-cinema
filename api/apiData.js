@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const data = JSON.parse(
-  fs.readFileSync(path.resolve("./api/offline.json"), "utf-8")
+  fs.readFileSync(path.resolve("./api/data.json"), "utf-8")
 );
 
 function generateSessions(id) {
