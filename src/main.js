@@ -1,5 +1,6 @@
 import "@/assets/style.scss";
 import { createApp } from "vue";
+import genres from "@/util/genres";
 
 createApp({
   components: {
@@ -20,9 +21,20 @@ createApp({
     "movie-filter": {
       template: `
         <div id="movie-filter">
-            Movie list
+            <h2>Filter results</h2>
+            <div class="filter-group">
+                <check-filter v-for="genre in genres"></check-filter>
+            </div>
         </div>
-      `
+      `,
+      data: () => ({
+        genres
+      }),
+      components: {
+        "check-filter": {
+          template: `<div>Check filter</div>`
+        }
+      }
     }
   }
 }).mount("#app");
