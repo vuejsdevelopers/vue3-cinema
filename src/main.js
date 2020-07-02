@@ -23,7 +23,10 @@ createApp({
         <div id="movie-filter">
             <h2>Filter results</h2>
             <div class="filter-group">
-                <check-filter v-for="genre in genres"></check-filter>
+                <check-filter
+                    v-for="genre in genres"
+                    v-bind:title="genre"
+                ></check-filter>
             </div>
         </div>
       `,
@@ -32,7 +35,8 @@ createApp({
       }),
       components: {
         "check-filter": {
-          template: `<div>Check filter</div>`
+          props: [ "title" ],
+          template: `<span class="check-filter-title">{{ title }}</span>`
         }
       }
     }
