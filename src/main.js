@@ -25,7 +25,7 @@ createApp({
             <div class="filter-group">
                 <check-filter
                     v-for="genre in genres"
-                    v-bind:title="genre"
+                    v-bind:title="1"
                 ></check-filter>
             </div>
         </div>
@@ -35,7 +35,9 @@ createApp({
       }),
       components: {
         "check-filter": {
-          props: [ "title" ],
+          props: {
+            title: String
+          },
           template: `<span class="check-filter-title">{{ title }}</span>`
         }
       }
