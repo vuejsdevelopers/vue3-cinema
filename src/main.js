@@ -3,6 +3,19 @@ import { createApp } from "vue";
 import genres from "@/util/genres";
 
 createApp({
+  methods: {
+    checkFilter(checked, title) {
+      if (checked) {
+        this.genres.push(title);
+      } else {
+        this.genres = this.genres.filter(genre => genre !== title);
+      }
+    }
+  },
+  data: () => ({
+    genres: [],
+    times: []
+  }),
   components: {
     "movie-list": {
       template: `
@@ -16,7 +29,10 @@ createApp({
           { title: "Home Alone" },
           { title: "Austin Powers" }
         ]
-      })
+      }),
+      props: {
+        genres: Array
+      }
     },
     "movie-filter": {
       template: `
@@ -26,6 +42,7 @@ createApp({
                 <check-filter
                     v-for="genre in genres"
                     v-bind:title="genre"
+                    v-on:check-filter="checkFilter"
                 ></check-filter>
             </div>
         </div>
@@ -38,9 +55,10 @@ createApp({
           props: {
             title: String
           },
+          emits: ["check-filter"],
           template: `
             <div 
-              v-on:click="checked = !checked"
+              v-on:click="checkFilter"
               v-bind:class="{ 'check-filter': true, active: checked }"
             >
               <span class="checkbox"></span>
@@ -49,9 +67,21 @@ createApp({
           `,
           data: () => ({
             checked: false
-          })
+          }),
+          methods: {
+            checkFilter() {
+              this.checked = !this.checked;
+              this.$emit("check-filter", this.checked, this.title);
+            }
+          }
         }
-      }
+      },
+      emits: ["check-filter"],
+      methods: {
+        checkFilter(checked, title) {
+          this.$emit("check-filter", checked, title);
+        }
+      },
     }
   }
 }).mount("#app");
