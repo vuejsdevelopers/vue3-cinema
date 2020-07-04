@@ -20,18 +20,39 @@ createApp({
     "movie-list": {
       template: `
         <div id="movie-list">
-            <div v-for="movie in movies">{{ movie.title }}</div>
+            <div v-for="movie in filteredMovies">{{ movie.title }}</div>
         </div>
       `,
       data: () => ({
         movies: [
-          { title: "Pulp Fiction" },
-          { title: "Home Alone" },
-          { title: "Austin Powers" }
+          {
+            title: "Pulp Fiction",
+            Genre: "Crime, Comedy"
+          },
+          {
+            title: "Home Alone",
+            Genre: "Comedy"
+          },
+          {
+            title: "Austin Powers",
+            Genre: "Comedy"
+          }
         ]
       }),
       props: {
         genres: Array
+      },
+      computed: {
+        filteredMovies() {
+          return this.movies.filter(movie => {
+            if (!this.genres.length) {
+              return true;
+            } else {
+              const movieGenres = movie.Genre.split(", ");
+              return movieGenres.some(genre => this.genres.includes(genre));
+            }
+          });
+        }
       }
     },
     "movie-filter": {
@@ -81,7 +102,7 @@ createApp({
         checkFilter(checked, title) {
           this.$emit("check-filter", checked, title);
         }
-      },
+      }
     }
   }
 }).mount("#app");
