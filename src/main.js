@@ -13,8 +13,7 @@ createApp({
     }
   },
   data: () => ({
-    genres: [],
-    times: []
+    genres: []
   }),
   components: {
     "movie-list": {
