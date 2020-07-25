@@ -1,7 +1,8 @@
 require("dotenv").config();
 
-const moment = require("moment-timezone");
-moment.tz.setDefault("UTC");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dayjs.extend(utc);
 const fs = require("fs");
 const path = require("path");
 
@@ -27,7 +28,7 @@ function generateSessions(id) {
   nums.splice(nums[3], 0, nums[0]);
   nums.shift();
   nums.forEach((num, index) => {
-    const date = moment()
+    const date = dayjs()
       .startOf("day")
       .add(index, "days");
     for (let i = 0; i < num; i++) {
@@ -38,7 +39,7 @@ function generateSessions(id) {
         nums[pos] < 2.5 ? 0 : nums[pos] < 5 ? 15 : nums[pos] < 7.5 ? 30 : 45;
       sessions.push({
         id: `${id}_${i}`,
-        time: moment(date)
+        time: dayjs(date)
           .add(hours, "hours")
           .add(mins, "minutes"),
         seats: Math.round(

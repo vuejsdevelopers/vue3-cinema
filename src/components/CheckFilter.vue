@@ -20,7 +20,7 @@ export default {
   methods: {
     checkFilter() {
       this.checked = !this.checked;
-      this.$emit("check-filter", this.checked, this.title);
+      this.$emit("check-filter", this.checked);
     }
   }
 };
