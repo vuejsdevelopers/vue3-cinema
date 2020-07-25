@@ -42,12 +42,10 @@ export default {
     timeFilter(session) {
       if (!this.times.length || this.times.length === 2) {
         return true;
+      } else if (this.times[0] === times.BEFORE_6PM) {
+        return dayjs(session.time).hour() < 18;
       } else {
-        if (this.times[0] === times.BEFORE_6PM) {
-          return dayjs(session.time).hour() < 18;
-        } else {
-          return dayjs(session.time).hour() >= 18;
-        }
+        return dayjs(session.time).hour() >= 18;
       }
     },
     formatSessionTime(raw) {
