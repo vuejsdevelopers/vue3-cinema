@@ -32,9 +32,7 @@ export default {
   },
   computed: {
     filteredSessions() {
-      return this.movie.sessions
-        .filter(this.dayFilter)
-        .filter(this.timeFilter);
+      return this.movie.sessions.filter(this.dayFilter).filter(this.timeFilter);
     }
   },
   methods: {

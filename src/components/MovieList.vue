@@ -2,11 +2,11 @@
   <div id="movie-list">
     <div v-if="filteredMovies.length">
       <movie-item
-              v-for="movie in filteredMovies"
-              v-bind:key="movie.id"
-              v-bind:movie="movie"
-              v-bind:day="day"
-              v-bind:times="times"
+        v-for="movie in filteredMovies"
+        v-bind:key="movie.id"
+        v-bind:movie="movie"
+        v-bind:day="day"
+        v-bind:times="times"
       />
     </div>
     <div v-else-if="movies.length" class="no-results">
@@ -60,9 +60,7 @@ export default {
   },
   computed: {
     filteredMovies() {
-      return this.movies
-        .filter(this.genreFilter)
-        .filter(this.timeFilter);
+      return this.movies.filter(this.genreFilter).filter(this.timeFilter);
     }
   }
 };
