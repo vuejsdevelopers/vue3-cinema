@@ -19,7 +19,7 @@
     "moment": "~2.23.0",
     "moment-timezone": "^0.5.31",
     "nodemon": "^2.0.4",
-    "vue": "^3.0.0-rc.2",
+    "vue": "^3.0.0-rc.5",
     "vue-router": "^4.0.0-alpha.6"
   },
   "devDependencies": {
