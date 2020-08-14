@@ -16,7 +16,12 @@
         <img src="/logo.png">
         <h1>Vue.js Cinema</h1>
       </div>
-      <router-view></router-view>
+      <router-view
+        v-bind:genres="genres"
+        v-bind:movies="movies"
+        v-bind:times="times"
+        v-bind:day="day"
+      ></router-view>
     </div>
   </body>
 </html>
