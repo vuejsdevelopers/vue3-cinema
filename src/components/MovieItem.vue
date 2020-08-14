@@ -1,11 +1,17 @@
 <template>
   <div class="movie">
     <div class="movie-col-left">
-      <img v-bind:src="movie.movie.Poster" />
+      <router-link v-bind:to="{ name: 'movie', params: { id: movie.movie.imdbID } }">
+        <img v-bind:src="movie.movie.Poster" />
+      </router-link>
     </div>
     <div class="movie-col-right">
       <div class="movie-title">
-        <h2>{{ movie.movie.Title }}</h2>
+        <router-link
+          v-bind:to="{ name: 'movie', params: { id: movie.movie.imdbID } }"
+        >
+          <h2>{{ movie.movie.Title }}</h2>
+        </router-link>
         <span class="movie-rating">{{ movie.movie.Rated }}</span>
       </div>
       <div class="movie-sessions">

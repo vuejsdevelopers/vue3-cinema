@@ -1,5 +1,5 @@
 <template>
-  <div>Movie page</div>
+  <h1>Movie page</h1>
 </template>
 <script>
 export default {};

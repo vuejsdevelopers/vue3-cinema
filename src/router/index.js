@@ -12,8 +12,12 @@ export default createRouter({
     },
     {
       name: "movie",
-      path: "/movie/{:id}",
+      path: "/movie/:id",
       component: Movie
+    },
+    {
+      path: "/:catchAll(.*)",
+      redirect: { name: "main" }
     }
   ]
 });
