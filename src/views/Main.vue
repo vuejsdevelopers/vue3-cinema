@@ -25,6 +25,11 @@ export default {
   components: {
     MovieFilter,
     MovieList
+  },
+  methods: {
+    checkFilter(checked, title, group) {
+      this.$emit("check-filter", checked, title, group);
+    }
   }
 };
 </script>
