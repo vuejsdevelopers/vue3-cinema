@@ -7,7 +7,7 @@
         v-bind:times="times"
         v-bind:day="day"
       ></movie-list>
-      <movie-filter v-on:check-filter="checkFilter"></movie-filter>
+      <movie-filter v-on:check-filter="checkFilter" />
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
     day: Object,
     times: Array
   },
+  emits: ["check-filter"],
   components: {
     MovieFilter,
     MovieList

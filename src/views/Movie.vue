@@ -25,7 +25,7 @@
       </div>
     </movie-item>
     <div class="home">
-      <router-link v-bind:to="{ name: 'main' }">Back to results</router-link>
+      <router-link v-bind:to="{ name: 'home' }">Back to results</router-link>
     </div>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
         return true;
       });
     } else {
-      next({ name: "main" });
+      next({ name: "home" });
     }
   }
 };

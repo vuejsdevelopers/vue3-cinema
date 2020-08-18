@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Main from "@/views/Main";
+import Home from "@/views/Home";
 import Movie from "@/views/Movie";
 
 export default createRouter({
   history: createWebHistory(),
   routes: [
     {
-      name: "main",
+      name: "home",
       path: "/",
-      component: Main
+      component: Home
     },
     {
       name: "movie",
@@ -17,7 +17,7 @@ export default createRouter({
     },
     {
       path: "/:catchAll(.*)",
-      redirect: { name: "main" }
+      redirect: { name: "home" }
     }
   ]
 });
