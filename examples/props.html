@@ -1,0 +1,33 @@
+<html>
+<head></head>
+<body>
+<div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+<script>
+  import { createApp } from "vue";
+
+  createApp({
+    components: {
+      "my-component": {
+        data: () => ({ message: "My message" }),
+        template: `<div>{{ message }}</div>`
+      }
+    }
+  }).mount("#app");
+</script>
+</body>
+</html>
+
+
+<!--
+
+Renders as...
+
+<div id="app">
+  <div>My message</div>
+  <div>My message</div>
+</div>
+
+-->
