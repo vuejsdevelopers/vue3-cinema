@@ -15,7 +15,7 @@
 <script>
 import MovieList from "@/components/MovieList";
 import MovieFilter from "@/components/MovieFilter";
-import DaySelect from "@/components/DaySelect"
+import DaySelect from "@/components/DaySelect";
 
 export default {
   props: {
