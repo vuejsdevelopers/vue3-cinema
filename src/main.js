@@ -12,6 +12,9 @@ const app = createApp({
       } else {
         this[group] = this[group].filter(item => item !== title);
       }
+    },
+    daySelected(day) {
+      this.day = day;
     }
   },
   data: () => ({
