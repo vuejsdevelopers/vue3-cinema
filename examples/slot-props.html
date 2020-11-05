@@ -1,0 +1,32 @@
+<!--Child.vue-->
+<template>
+  <span>
+    <slot v-bind:user="user"></slot>
+  </span>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        user: {
+          name: "George"
+        }
+      }
+    }
+  }
+</script>
+
+<!--Parent.vue-->
+<template>
+    <Child v-slot="{ user }">
+        <p>{{ user.name }}</p>
+    </Child>
+</template>
+
+
+<!--Form.vue-->
+<template>
+    <FormInput v-slot="{ title }">
+        <label>{{ title }}</label>
+    </FormInput>
+</template>
