@@ -1,0 +1,23 @@
+<body>
+    <div id="app">
+        <div v-backwards>Hello, World</div>
+    </div>
+</body>
+<script>
+const app = createApp();
+app.directive("backwards", {
+  mounted(el) {
+    el.innerText.split("").reverse().join("");
+  }
+});
+app.mount("#app");
+</script>
+
+<!--
+Renders as:
+
+<div id="app">
+    <div>dlroW ,olleH</div>
+</div>
+
+-->

@@ -1,0 +1,20 @@
+<template>
+    <component :is="comp"></component>
+</template>
+<script>
+export default {
+  data: () => ({
+    comp: {
+      template: '<div>Hello World</div>'
+    }
+  })
+}
+</script>
+
+<!--
+
+Renders as:
+
+<div>Hello World</div>
+
+-->
