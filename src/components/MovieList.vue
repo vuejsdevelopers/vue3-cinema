@@ -55,8 +55,7 @@ export default {
         return movie.sessions.some(session => {
           if (!dayjs(session.time).isSame(this.day, "day")) {
             return false;
-          }
-          if (this.times[0] === times.BEFORE_6PM) {
+          } else if (this.times[0] === times.BEFORE_6PM) {
             return dayjs(session.time).hour() < 18;
           } else {
             return dayjs(session.time).hour() >= 18;

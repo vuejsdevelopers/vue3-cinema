@@ -1,0 +1,37 @@
+<html>
+<head></head>
+<body>
+<div id="app">
+    <my-component v-on:my-event="myMethod"></my-component>
+</div>
+<script>
+  import { createApp } from "vue";
+
+  const app = createApp({
+    methods: {
+      myMethod() {
+        console.log("my-event received");
+      }
+    }
+  });
+
+  app.component("my-component", {
+    template: `<button>My Button</button>`
+  });
+
+  app.mount("#app");
+
+</script>
+</body>
+</html>
+
+
+<!--
+
+Renders as...
+
+<div id="app">
+    <button>My Button</button>
+</div>
+
+-->
