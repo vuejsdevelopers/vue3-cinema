@@ -1,0 +1,55 @@
+<!-- MyPopupWindow.vue -->
+<template>
+
+    <!--child-defined content-->
+    <div>
+        <button>Close popup</button>
+    </div>
+
+    <!--parent-defined content-->
+    <slot />
+</template>
+
+
+<!-- App.vue -->
+<template>
+    <my-popup-window>
+        <p>Here's the parent defined content.</p>
+    </my-popup-window>
+</template>
+
+
+<!--
+Renders as:
+
+<div>
+    <button>Close popup</button>
+</div>
+<p>Here's the parent defined content.</p>
+
+-->
+
+<!--App.vue-->
+<template>
+    <my-popup-window>
+        <p>Here's the parent defined content.</p>
+        <p>{{ message }}</p>
+    </my-popup-window>
+</template>
+<script>
+  export default {
+    message: "I'm a parent-context value."
+  };
+</script>
+
+
+<!--
+Renders as
+
+<div>
+    <button>Close popup</button>
+</div>
+<p>Here's the parent defined content.</p>
+<p>I'm a parent-context value.</p>
+
+-->
